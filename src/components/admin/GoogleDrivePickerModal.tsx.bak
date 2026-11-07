@@ -1,0 +1,624 @@
+import React, { useState, useEffect } from 'react';
+import { useAdminAuth } from '../../context/AdminAuthContext';
+import {
+  searchDriveFiles,
+  DriveFile,
+  formatDriveViewUrl,
+  formatDriveThumbnailUrl,
+} from '../../services/googleDriveService';
+import { getGoogleDriveFileId } from '../../utils/drive';
+
+interface GoogleDrivePickerModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSelectFile: (file: { id: string; name: string; url: string; mimeType: string }) => void;
+  filterMime?: 'image' | 'pdf' | 'all';
+  title?: string;
+}
+
+export const GoogleDrivePickerModal: React.FC<GoogleDrivePickerModalProps> = ({
+  isOpen,
+  onClose,
+  onSelectFile,
+  filterMime = 'all',
+  title = 'Select Media from Google Drive',
+}) => {
+  const { driveToken, connectGoogleDrive } = useAdminAuth();
+  const [files, setFiles] = useState<DriveFile[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [currentMime, setCurrentMime] = useState<'image' | 'pdf' | 'all'>(filterMime);
+  const [manualInput, setManualInput] = useState<string>('');
+
+  useEffect(() => {
+    setCurrentMime(filterMime);
+  }, [filterMime]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    if (driveToken) {
+      loadFiles();
+    }
+  }, [isOpen, driveToken, currentMime]);
+
+  const loadFiles = async (query = searchQuery) => {
+    if (!driveToken) return;
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await searchDriveFiles(driveToken, {
+        query,
+        mimeType: currentMime,
+        pageSize: 30,
+      });
+      setFiles(res.files);
+    } catch (err: any) {
+      console.error('Failed to load Drive files:', err);
+      setError(
+        'Unable to load files from Google Drive. Your session may have expired. Please reconnect.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    loadFiles(searchQuery);
+  };
+
+  const handleConnect = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const token = await connectGoogleDrive();
+      if (token) {
+        const res = await searchDriveFiles(token, {
+          query: searchQuery,
+          mimeType: currentMime,
+          pageSize: 30,
+        });
+        setFiles(res.files);
+      }
+    } catch (err: any) {
+      if (
+        err?.code !== 'auth/popup-closed-by-user' &&
+        err?.code !== 'auth/cancelled-popup-request' &&
+        !err?.message?.includes('popup-closed-by-user')
+      ) {
+        setError(err.message || 'Failed to connect Google Drive.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSelectManual = () => {
+    const trimmed = manualInput.trim();
+    if (!trimmed) return;
+    const fileId = getGoogleDriveFileId(trimmed) || trimmed;
+    const viewUrl = formatDriveViewUrl(fileId);
+    onSelectFile({
+      id: fileId,
+      name: `Drive File (${fileId.substring(0, 8)}...)`,
+      url: viewUrl,
+      mimeType: currentMime === 'pdf' ? 'application/pdf' : 'image/jpeg',
+    });
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="admin-modal-overlay"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        backdropFilter: 'blur(8px)',
+        zIndex: 10000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',
+      }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        className="admin-modal-content"
+        style={{
+          backgroundColor: '#18181b',
+          border: '1px solid #27272a',
+          borderRadius: '16px',
+          width: '100%',
+          maxWidth: '920px',
+          maxHeight: '85vh',
+          display: 'flex',
+          flexDirection: 'column',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          overflow: 'hidden',
+          color: '#f4f4f5',
+        }}
+      >
+        {/* Header */}
+        <div
+          style={{
+            padding: '18px 24px',
+            borderBottom: '1px solid #27272a',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: 'linear-gradient(to right, #1f1f23, #18181b)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                background: 'rgba(59, 130, 246, 0.15)',
+                border: '1px solid rgba(59, 130, 246, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#60a5fa',
+              }}
+            >
+              <i className="fab fa-google-drive" style={{ fontSize: '18px' }}></i>
+            </div>
+            <div>
+              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 600 }}>{title}</h3>
+              <p style={{ margin: 0, fontSize: '0.8rem', color: '#a1a1aa' }}>
+                Browse and select files directly from your Google Drive
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            style={{
+              background: '#27272a',
+              border: 'none',
+              color: '#d4d4d8',
+              width: '32px',
+              height: '32px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Toolbar */}
+        <div
+          style={{
+            padding: '14px 24px',
+            borderBottom: '1px solid #27272a',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: '#121214',
+          }}
+        >
+          {/* Search form */}
+          <form
+            onSubmit={handleSearchSubmit}
+            style={{ display: 'flex', flex: 1, minWidth: '240px', gap: '8px' }}
+          >
+            <input
+              type="text"
+              placeholder="Search files by name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                flex: 1,
+                padding: '8px 14px',
+                background: '#1f1f23',
+                border: '1px solid #3f3f46',
+                borderRadius: '8px',
+                color: '#fff',
+                fontSize: '0.9rem',
+                outline: 'none',
+              }}
+            />
+            <button
+              type="submit"
+              disabled={loading || !driveToken}
+              style={{
+                padding: '8px 16px',
+                background: '#2563eb',
+                border: 'none',
+                borderRadius: '8px',
+                color: '#fff',
+                fontWeight: 600,
+                fontSize: '0.85rem',
+                cursor: loading ? 'not-allowed' : 'pointer',
+              }}
+            >
+              Search
+            </button>
+          </form>
+
+          {/* Filter tabs */}
+          <div style={{ display: 'flex', gap: '6px' }}>
+            {(['all', 'image', 'pdf'] as const).map((mime) => (
+              <button
+                key={mime}
+                type="button"
+                onClick={() => setCurrentMime(mime)}
+                style={{
+                  padding: '6px 12px',
+                  borderRadius: '6px',
+                  border: currentMime === mime ? '1px solid #3b82f6' : '1px solid #3f3f46',
+                  background: currentMime === mime ? 'rgba(59, 130, 246, 0.2)' : '#1f1f23',
+                  color: currentMime === mime ? '#93c5fd' : '#a1a1aa',
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  textTransform: 'capitalize',
+                }}
+              >
+                {mime === 'all' ? 'All Files' : mime === 'image' ? 'Images' : 'PDFs'}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Content Body */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '20px 24px' }}>
+          {!driveToken ? (
+            <div style={{ textAlign: 'center', padding: '32px 20px', maxWidth: '540px', margin: '0 auto' }}>
+              <div
+                style={{
+                  fontSize: '2.8rem',
+                  color: '#60a5fa',
+                  marginBottom: '14px',
+                }}
+              >
+                <i className="fab fa-google-drive"></i>
+              </div>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>
+                Connect Your Google Drive
+              </h4>
+              <p
+                style={{
+                  color: '#a1a1aa',
+                  margin: '0 auto 20px auto',
+                  fontSize: '0.88rem',
+                  lineHeight: 1.5,
+                }}
+              >
+                Authorize read-only access to browse certificates, event photography, project screenshots, and resume files.
+              </p>
+              <button
+                type="button"
+                onClick={handleConnect}
+                disabled={loading}
+                style={{
+                  padding: '10px 24px',
+                  background: 'linear-gradient(135deg, #2563eb, #3b82f6)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '0.95rem',
+                  cursor: loading ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 4px 14px rgba(37, 99, 235, 0.4)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}
+              >
+                <i className="fab fa-google-drive"></i>
+                {loading ? 'Connecting...' : 'Connect Google Drive'}
+              </button>
+
+              {/* Google Verification Tip */}
+              <div
+                style={{
+                  marginTop: '20px',
+                  padding: '12px 14px',
+                  backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                  border: '1px solid rgba(59, 130, 246, 0.25)',
+                  borderRadius: '8px',
+                  textAlign: 'left',
+                  fontSize: '0.78rem',
+                  color: '#93c5fd',
+                  lineHeight: 1.4,
+                }}
+              >
+                <i className="fas fa-info-circle" style={{ marginRight: '6px' }}></i>
+                <strong>Google Cloud Testing Notice:</strong> If Google displays <em>"Google hasn&apos;t verified this app"</em>, click <strong>"Advanced"</strong> at the bottom of the popup, then click <strong>"Go to Mayur Portfolio (unsafe)"</strong> to authorize your developer account.
+              </div>
+
+              {/* Direct Paste Alternative */}
+              <div
+                style={{
+                  marginTop: '24px',
+                  paddingTop: '20px',
+                  borderTop: '1px dashed #27272a',
+                  textAlign: 'left',
+                }}
+              >
+                <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#e4e4e7', marginBottom: '8px' }}>
+                  Or paste a Google Drive file link / ID directly:
+                </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input
+                    type="text"
+                    placeholder="https://drive.google.com/file/d/... or File ID"
+                    value={manualInput}
+                    onChange={(e) => setManualInput(e.target.value)}
+                    style={{
+                      flex: 1,
+                      padding: '8px 12px',
+                      backgroundColor: '#121214',
+                      border: '1px solid #3f3f46',
+                      borderRadius: '8px',
+                      color: '#fff',
+                      fontSize: '0.85rem',
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleSelectManual}
+                    disabled={!manualInput.trim()}
+                    style={{
+                      padding: '8px 16px',
+                      backgroundColor: manualInput.trim() ? '#2563eb' : '#27272a',
+                      color: manualInput.trim() ? '#fff' : '#71717a',
+                      border: 'none',
+                      borderRadius: '8px',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      cursor: manualInput.trim() ? 'pointer' : 'not-allowed',
+                    }}
+                  >
+                    Use File
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : error ? (
+            <div
+              style={{
+                padding: '16px',
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                borderRadius: '10px',
+                color: '#fca5a5',
+                textAlign: 'center',
+                margin: '20px 0',
+              }}
+            >
+              <p style={{ margin: '0 0 12px 0' }}>{error}</p>
+              <button
+                type="button"
+                onClick={handleConnect}
+                style={{
+                  padding: '6px 14px',
+                  background: '#ef4444',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
+                Reconnect Drive
+              </button>
+            </div>
+          ) : loading ? (
+            <div style={{ textAlign: 'center', padding: '60px 0', color: '#a1a1aa' }}>
+              <i className="fas fa-spinner fa-spin" style={{ fontSize: '2rem', marginBottom: '12px' }}></i>
+              <p>Scanning your Google Drive files...</p>
+            </div>
+          ) : files.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '50px 0', color: '#a1a1aa' }}>
+              <i className="fas fa-folder-open" style={{ fontSize: '2.5rem', marginBottom: '12px', opacity: 0.5 }}></i>
+              <p>No matching files found in your Google Drive.</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  loadFiles('');
+                }}
+                style={{
+                  marginTop: '10px',
+                  padding: '6px 14px',
+                  background: '#27272a',
+                  color: '#d4d4d8',
+                  border: '1px solid #3f3f46',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
+                Clear Search
+              </button>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+                gap: '16px',
+              }}
+            >
+              {files.map((file) => {
+                const isPdf = file.mimeType === 'application/pdf';
+                const thumb = isPdf
+                  ? null
+                  : file.thumbnailLink || formatDriveThumbnailUrl(file.id, 400);
+
+                return (
+                  <div
+                    key={file.id}
+                    style={{
+                      background: '#1f1f23',
+                      border: '1px solid #2e2e34',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      transition: 'all 0.2s ease',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      onSelectFile({
+                        id: file.id,
+                        name: file.name,
+                        url: formatDriveViewUrl(file.id),
+                        mimeType: file.mimeType,
+                      });
+                      onClose();
+                    }}
+                  >
+                    {/* Thumbnail / Icon area */}
+                    <div
+                      style={{
+                        height: '110px',
+                        background: '#121214',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {thumb ? (
+                        <img
+                          src={thumb}
+                          alt={file.name}
+                          referrerPolicy="no-referrer"
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                          }}
+                          onError={(e) => {
+                            (e.target as HTMLElement).style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <i
+                          className={isPdf ? 'fas fa-file-pdf' : 'fas fa-file-image'}
+                          style={{
+                            fontSize: '2.5rem',
+                            color: isPdf ? '#ef4444' : '#60a5fa',
+                          }}
+                        ></i>
+                      )}
+
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '6px',
+                          right: '6px',
+                          background: 'rgba(0, 0, 0, 0.75)',
+                          padding: '2px 6px',
+                          borderRadius: '4px',
+                          fontSize: '0.65rem',
+                          fontWeight: 600,
+                          color: isPdf ? '#fca5a5' : '#93c5fd',
+                        }}
+                      >
+                        {isPdf ? 'PDF' : 'IMAGE'}
+                      </span>
+                    </div>
+
+                    {/* Metadata */}
+                    <div style={{ padding: '10px 12px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                      <div
+                        title={file.name}
+                        style={{
+                          fontSize: '0.82rem',
+                          fontWeight: 500,
+                          color: '#fff',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                          marginBottom: '6px',
+                        }}
+                      >
+                        {file.name}
+                      </div>
+
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          marginTop: 'auto',
+                          paddingTop: '6px',
+                          borderTop: '1px solid #27272a',
+                          fontSize: '0.72rem',
+                          color: '#71717a',
+                        }}
+                      >
+                        <span>ID: {file.id.substring(0, 8)}...</span>
+                        <span
+                          style={{
+                            color: '#3b82f6',
+                            fontWeight: 600,
+                          }}
+                        >
+                          Select →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div
+          style={{
+            padding: '12px 24px',
+            borderTop: '1px solid #27272a',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: '#121214',
+            fontSize: '0.8rem',
+            color: '#71717a',
+          }}
+        >
+          <span>
+            {files.length > 0 ? `Displaying ${files.length} Google Drive files` : ''}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            style={{
+              padding: '6px 16px',
+              background: '#27272a',
+              border: 'none',
+              borderRadius: '6px',
+              color: '#d4d4d8',
+              cursor: 'pointer',
+              fontWeight: 500,
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

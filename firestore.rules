@@ -1,0 +1,190 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (
+          request.auth.token.email_verified == true && (
+            request.auth.token.email == "mayurhr57@gmail.com" ||
+            request.auth.token.email == "raghugowd77@gmail.com"
+          )
+        ) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidMediaAsset(data, mediaId) {
+      return data.keys().hasAll([
+          'id',
+          'name',
+          'category',
+          'downloadUrl',
+          'publicId',
+          'mimeType',
+          'sizeBytes',
+          'status',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id',
+          'name',
+          'category',
+          'downloadUrl',
+          'cloudinaryUrl',
+          'publicId',
+          'cloudinaryResourceType',
+          'directPdfDelivery',
+          'format',
+          'storagePath',
+          'mimeType',
+          'sizeBytes',
+          'status',
+          'linkedEntityType',
+          'linkedEntityId',
+          'uploadedBy',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.id is string && data.id == mediaId && data.id.size() > 0 && data.id.size() <= 120
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 250
+        && data.category in ['Profile', 'Certificates', 'Projects', 'Events', 'Resume', 'Other']
+        && data.downloadUrl is string && data.downloadUrl.size() > 0 && data.downloadUrl.size() <= 2000 && (data.downloadUrl.matches('^https?://.+') || data.downloadUrl.matches('^/api/public/cloudinary/pdf\\?.+'))
+        && (!('cloudinaryUrl' in data) || (data.cloudinaryUrl is string && data.cloudinaryUrl.size() <= 2000 && data.cloudinaryUrl.matches('^https?://.+')))
+        && data.publicId is string && data.publicId.size() > 0 && data.publicId.size() <= 500
+        && data.mimeType in ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf']
+        && data.sizeBytes is number && data.sizeBytes > 0 && data.sizeBytes <= 10485760
+        && data.status in ['draft', 'published']
+        && data.createdAt is string && data.createdAt.size() > 0 && data.createdAt.size() <= 100
+        && data.updatedAt is string && data.updatedAt.size() > 0 && data.updatedAt.size() <= 100
+        && (!('cloudinaryResourceType' in data) || data.cloudinaryResourceType in ['image', 'raw', 'video'])
+        && (!('directPdfDelivery' in data) || data.directPdfDelivery is bool)
+        && (!('format' in data) || (data.format is string && data.format.size() > 0 && data.format.size() <= 32))
+        && (!('storagePath' in data) || (data.storagePath is string && data.storagePath.size() <= 500))
+        && (!('linkedEntityType' in data) || (data.linkedEntityType is string && data.linkedEntityType.size() <= 60))
+        && (!('linkedEntityId' in data) || (data.linkedEntityId is string && data.linkedEntityId.size() <= 120))
+        && (!('uploadedBy' in data) || (data.uploadedBy is string && data.uploadedBy.size() <= 200));
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Projects: Public can read published items; Admin can manage all
+    match /projects/{projectId} {
+      allow get: if isValidId(projectId) && (existing().status == 'published' || isAdmin());
+      allow list: if existing().status == 'published' || isAdmin();
+      allow create, update: if isAdmin() && isValidId(projectId)
+        && incoming().title is string && incoming().title.size() > 0 && incoming().title.size() <= 200
+        && incoming().status in ['draft', 'published'];
+      allow delete: if isAdmin() && isValidId(projectId);
+    }
+
+    // Certificates: Public can read published items; Admin can manage all
+    match /certificates/{certificateId} {
+      allow get: if isValidId(certificateId) && (existing().status == 'published' || isAdmin());
+      allow list: if existing().status == 'published' || isAdmin();
+      allow create, update: if isAdmin() && isValidId(certificateId)
+        && incoming().title is string && incoming().title.size() > 0 && incoming().title.size() <= 250
+        && incoming().status in ['draft', 'published'];
+      allow delete: if isAdmin() && isValidId(certificateId);
+    }
+
+    // Qualifications: Public can read published qualifications; Admin can manage all
+    match /qualifications/{qualificationId} {
+      allow get: if isValidId(qualificationId) && (existing().status == 'published' || !('status' in existing()) || isAdmin());
+      allow list: if existing().status == 'published' || !('status' in existing()) || isAdmin();
+      allow create, update: if isAdmin() && isValidId(qualificationId)
+        && incoming().degree is string && incoming().degree.size() > 0 && incoming().degree.size() <= 250;
+      allow delete: if isAdmin() && isValidId(qualificationId);
+    }
+
+    // Skills: Public can read published skills; Admin can manage all
+    match /skills/{skillCategoryId} {
+      allow get: if isValidId(skillCategoryId) && (existing().status == 'published' || !('status' in existing()) || isAdmin());
+      allow list: if existing().status == 'published' || !('status' in existing()) || isAdmin();
+      allow create, update: if isAdmin() && isValidId(skillCategoryId)
+        && incoming().name is string && incoming().name.size() > 0 && incoming().name.size() <= 150;
+      allow delete: if isAdmin() && isValidId(skillCategoryId);
+    }
+
+    // Social & Connect Links: Public can read active links; Admin can manage all
+    match /socialLinks/{socialLinkId} {
+      allow get: if isValidId(socialLinkId) && (existing().isActive != false || isAdmin());
+      allow list: if existing().isActive != false || isAdmin();
+      allow create, update: if isAdmin() && isValidId(socialLinkId)
+        && incoming().platform is string && incoming().platform.size() > 0 && incoming().platform.size() <= 100
+        && incoming().url is string && incoming().url.size() > 0 && incoming().url.size() <= 1000;
+      allow delete: if isAdmin() && isValidId(socialLinkId);
+    }
+
+    // Profile: Public can read published info; Admin can manage all
+    match /profile/{profileId} {
+      allow get: if isValidId(profileId) && (existing().status == 'published' || isAdmin());
+      allow list: if existing().status == 'published' || isAdmin();
+      allow create, update: if isAdmin() && isValidId(profileId)
+        && incoming().name is string && incoming().name.size() > 0 && incoming().name.size() <= 100
+        && incoming().status in ['draft', 'published'];
+      allow delete: if isAdmin() && isValidId(profileId);
+    }
+
+    // Resume: Public can read published resume; Admin can manage all
+    match /resume/{resumeId} {
+      allow get: if isValidId(resumeId) && (existing().status == 'published' || isAdmin());
+      allow list: if existing().status == 'published' || isAdmin();
+      allow create, update: if isAdmin() && isValidId(resumeId)
+        && incoming().resumePdfUrl is string && incoming().resumePdfUrl.size() > 0 && incoming().resumePdfUrl.size() <= 1500
+        && incoming().status in ['draft', 'published'];
+      allow delete: if isAdmin() && isValidId(resumeId);
+    }
+
+    // Media Assets: Public can read published assets only; Admin can upload, update, delete
+    match /media_assets/{mediaId} {
+      allow get: if isValidId(mediaId) && (existing().status == 'published' || isAdmin());
+      allow list: if existing().status == 'published' || isAdmin();
+      allow create: if isAdmin() && isValidId(mediaId) && isValidMediaAsset(incoming(), mediaId);
+      allow update: if isAdmin()
+        && isValidId(mediaId)
+        && isValidMediaAsset(incoming(), mediaId)
+        && incoming().id == existing().id
+        && (!('createdAt' in existing()) || incoming().createdAt == existing().createdAt);
+      allow delete: if isAdmin() && isValidId(mediaId);
+    }
+
+    // Admins registry: Only admins can read/write
+    match /admins/{adminId} {
+      allow get, create, update, delete: if isAdmin() && isValidId(adminId);
+      allow list: if isAdmin();
+    }
+
+    // Analytics: Only authenticated admins can read/query analytics data
+    match /analytics_events/{eventId} {
+      allow get, create, update, delete: if isAdmin() && isValidId(eventId);
+      allow list: if isAdmin();
+    }
+
+    // Contact messages: Only authenticated admins can read, update, or delete visitor messages
+    match /messages/{messageId} {
+      allow get, create, update, delete: if isAdmin() && isValidId(messageId);
+      allow list: if isAdmin();
+    }
+  }
+}

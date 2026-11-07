@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mayur H R Portfolio</title>
+    <meta name="description" content="Portfolio of Mayur H R, Web Developer featuring projects, certifications, qualifications, and skills." />
+    <meta property="og:title" content="Mayur H R Portfolio" />
+    <meta property="og:description" content="Portfolio of Mayur H R, Web Developer featuring projects, certifications, qualifications, and skills." />
+    <script>
+      // Filter out benign browser extension errors and extension message timeouts
+      window.addEventListener('unhandledrejection', function (event) {
+        var reason = event.reason;
+        var msg = (typeof reason === 'string' ? reason : (reason && reason.message) || '') + '';
+        var stack = (reason && reason.stack) || '';
+        if (
+          msg.indexOf('chrome: call method') !== -1 ||
+          msg.indexOf('chrome-extension://') !== -1 ||
+          stack.indexOf('chrome-extension://') !== -1 ||
+          msg.indexOf('popup-closed-by-user') !== -1 ||
+          msg.indexOf('cancelled-popup-request') !== -1
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      });
+
+      window.addEventListener('error', function (event) {
+        var msg = (event.message || '') + '';
+        var filename = (event.filename || '') + '';
+        if (
+          msg.indexOf('chrome: call method') !== -1 ||
+          msg.indexOf('chrome-extension://') !== -1 ||
+          filename.indexOf('chrome-extension://') !== -1
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      });
+    </script>
+    <link rel="icon" type="image/png" href="/assest/logo/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

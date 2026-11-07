@@ -1,0 +1,241 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "Portfolio project item",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "type": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "tech": { "type": "array" },
+        "github": { "type": "string", "maxLength": 500 },
+        "live": { "type": "string", "maxLength": 500 },
+        "videoSrc": { "type": "string", "maxLength": 500 },
+        "thumbnailUrl": { "type": "string", "maxLength": 1000 },
+        "publicId": { "type": "string", "maxLength": 500 },
+        "cloudinaryResourceType": { "type": "string", "enum": ["image", "raw", "video"] },
+        "storagePath": { "type": "string", "maxLength": 500 },
+        "featured": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string", "maxLength": 100 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["title", "status"]
+    },
+    "Certificate": {
+      "title": "Certificate",
+      "description": "Certificate and achievement record",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 250 },
+        "issuer": { "type": "string", "maxLength": 150 },
+        "year": { "type": "string", "maxLength": 20 },
+        "category": { "type": "string", "maxLength": 100 },
+        "featured": { "type": "boolean" },
+        "viewAchievement": { "type": "boolean" },
+        "driveLink": { "type": "string", "maxLength": 1500 },
+        "cloudinaryUrl": { "type": "string", "maxLength": 2000 },
+        "publicId": { "type": "string", "maxLength": 500 },
+        "cloudinaryResourceType": { "type": "string", "enum": ["image", "raw", "video"] },
+        "directPdfDelivery": { "type": "boolean" },
+        "storagePath": { "type": "string", "maxLength": 500 },
+        "github": { "type": "string", "maxLength": 500 },
+        "presentation": { "type": "string", "maxLength": 500 },
+        "offerLetter": { "type": "string", "maxLength": 500 },
+        "demoVideo": { "type": "string", "maxLength": 500 },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "order": { "type": "number" },
+        "achievement": { "type": "object" },
+        "createdAt": { "type": "string", "maxLength": 100 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["title", "status"]
+    },
+    "Qualification": {
+      "title": "Qualification",
+      "description": "Educational background and academic credentials",
+      "type": "object",
+      "properties": {
+        "degree": { "type": "string", "maxLength": 250 },
+        "institution": { "type": "string", "maxLength": 250 },
+        "specialization": { "type": "string", "maxLength": 200 },
+        "startYear": { "type": "string", "maxLength": 50 },
+        "endYear": { "type": "string", "maxLength": 50 },
+        "grade": { "type": "string", "maxLength": 100 },
+        "location": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "order": { "type": "number" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["degree", "institution", "startYear", "endYear"]
+    },
+    "SkillCategory": {
+      "title": "SkillCategory",
+      "description": "Technical and professional skill category with items",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 150 },
+        "icon": { "type": "string", "maxLength": 100 },
+        "order": { "type": "number" },
+        "skills": { "type": "array" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["name"]
+    },
+    "SocialLink": {
+      "title": "SocialLink",
+      "description": "Connect with me social profile or contact channel",
+      "type": "object",
+      "properties": {
+        "platform": { "type": "string", "maxLength": 100 },
+        "url": { "type": "string", "maxLength": 1000 },
+        "icon": { "type": "string", "maxLength": 100 },
+        "title": { "type": "string", "maxLength": 150 },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["platform", "url", "icon"]
+    },
+    "Profile": {
+      "title": "Profile",
+      "description": "Personal profile and contact info",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "tagline": { "type": "string", "maxLength": 300 },
+        "aboutParagraphs": { "type": "array" },
+        "education": { "type": "array" },
+        "skills": { "type": "array" },
+        "contact": { "type": "object" },
+        "profileImageUrl": { "type": "string", "maxLength": 1500 },
+        "profileImagePublicId": { "type": "string", "maxLength": 500 },
+        "profileImageResourceType": { "type": "string", "enum": ["image", "raw", "video"] },
+        "profileImageStoragePath": { "type": "string", "maxLength": 500 },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["name", "status"]
+    },
+    "Resume": {
+      "title": "Resume",
+      "description": "Resume links, Cloudinary media metadata, and preserved version history",
+      "type": "object",
+      "properties": {
+        "resumePdfUrl": { "type": "string", "maxLength": 1500 },
+        "downloadUrl": { "type": "string", "maxLength": 1500 },
+        "cloudinaryUrl": { "type": "string", "maxLength": 2000 },
+        "fileName": { "type": "string", "maxLength": 250 },
+        "publicId": { "type": "string", "maxLength": 500 },
+        "cloudinaryResourceType": { "type": "string", "enum": ["image", "raw", "video"] },
+        "directPdfDelivery": { "type": "boolean" },
+        "storagePath": { "type": "string", "maxLength": 500 },
+        "sizeBytes": { "type": "number" },
+        "history": { "type": "array" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["resumePdfUrl", "status"]
+    },
+    "MediaAsset": {
+      "title": "MediaAsset",
+      "description": "Uploaded portfolio media asset stored in Cloudinary with category and visibility metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 120 },
+        "name": { "type": "string", "maxLength": 250 },
+        "category": { "type": "string", "enum": ["Profile", "Certificates", "Projects", "Events", "Resume", "Other"] },
+        "downloadUrl": { "type": "string", "maxLength": 2000 },
+        "cloudinaryUrl": { "type": "string", "maxLength": 2000 },
+        "publicId": { "type": "string", "maxLength": 500 },
+        "cloudinaryResourceType": { "type": "string", "enum": ["image", "raw", "video"] },
+        "directPdfDelivery": { "type": "boolean" },
+        "format": { "type": "string", "maxLength": 32 },
+        "storagePath": { "type": "string", "maxLength": 500 },
+        "mimeType": { "type": "string", "maxLength": 120 },
+        "sizeBytes": { "type": "number" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "linkedEntityType": { "type": "string", "maxLength": 60 },
+        "linkedEntityId": { "type": "string", "maxLength": 120 },
+        "uploadedBy": { "type": "string", "maxLength": 200 },
+        "createdAt": { "type": "string", "maxLength": 100 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "name", "category", "downloadUrl", "publicId", "mimeType", "sizeBytes", "status", "createdAt", "updatedAt"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized admin account record",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 200 },
+        "role": { "type": "string", "enum": ["admin"] }
+      },
+      "required": ["email", "role"]
+    },
+    "AnalyticsEvent": {
+      "title": "AnalyticsEvent",
+      "description": "Visitor interaction and engagement analytics event",
+      "type": "object",
+      "properties": {
+        "eventType": { "type": "string", "maxLength": 100 },
+        "visitorId": { "type": "string", "maxLength": 128 },
+        "sessionId": { "type": "string", "maxLength": 128 },
+        "timestamp": { "type": "string", "maxLength": 100 },
+        "targetId": { "type": "string", "maxLength": 200 },
+        "targetType": { "type": "string", "maxLength": 100 },
+        "deviceCategory": { "type": "string", "maxLength": 50 },
+        "referrer": { "type": "string", "maxLength": 500 },
+        "engagementSeconds": { "type": "number" },
+        "isTest": { "type": "boolean" }
+      },
+      "required": ["eventType", "visitorId", "sessionId", "timestamp", "deviceCategory"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Projects collection for portfolio"
+    },
+    "/certificates/{certificateId}": {
+      "schema": { "$ref": "#/entities/Certificate" },
+      "description": "Certificates and achievements collection"
+    },
+    "/qualifications/{qualificationId}": {
+      "schema": { "$ref": "#/entities/Qualification" },
+      "description": "Academic qualifications and degrees"
+    },
+    "/skills/{skillCategoryId}": {
+      "schema": { "$ref": "#/entities/SkillCategory" },
+      "description": "Skill categories and items"
+    },
+    "/socialLinks/{socialLinkId}": {
+      "schema": { "$ref": "#/entities/SocialLink" },
+      "description": "Social media and contact channels"
+    },
+    "/profile/{profileId}": {
+      "schema": { "$ref": "#/entities/Profile" },
+      "description": "Profile information"
+    },
+    "/resume/{resumeId}": {
+      "schema": { "$ref": "#/entities/Resume" },
+      "description": "Resume references"
+    },
+    "/media_assets/{mediaId}": {
+      "schema": { "$ref": "#/entities/MediaAsset" },
+      "description": "Cloudinary uploaded portfolio media metadata"
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Admin access control list"
+    },
+    "/analytics_events/{eventId}": {
+      "schema": { "$ref": "#/entities/AnalyticsEvent" },
+      "description": "Analytics tracking events collection"
+    }
+  }
+}

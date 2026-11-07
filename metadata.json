@@ -1,0 +1,9 @@
+{
+  "name": "My world",
+  "description": "Imported from GitHub",
+  "permissions": [],
+  "capabilities": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

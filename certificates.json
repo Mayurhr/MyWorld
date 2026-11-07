@@ -1,0 +1,508 @@
+[
+  {
+    "title": "PYTHON PROGRAMMING BY VEDA TECHNOLOGY",
+    "issuer": "Veda Technology",
+    "year": "2026",
+    "category": "Activity",
+    "featured": false,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/1HuAyUsrUE_8Ksj2JX5A7JC0LAl7wia3g/view?usp=drivesdk",
+    "achievement": {
+      "experience": "**Python Programming Internship — Veda Technology**. I done an activity of 45-day remote Python Programming Internship at Veda Technology, beginning on 24 August 2026. This opportunity provides structured learning through guided assignments, practical exercises. It gives me an opportunity to strengthen my Python programming knowledge, practical problem-solving skills and understanding of professional development practices while working through assigned tasks and learning modules. The experience is helping me apply my technical knowledge in a structured environment and further develop my programming skills.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/1USxOU8QUBQlTZOnaIWtT0CewE6Fj8Yy0/view?usp=drive_link"
+      ],
+      "github": "https://github.com/Mayurhr/veda-technology-internship"
+    }
+  },
+  {
+    "title": "Two-Day Lean Start-up & MVP Boot Camp",
+    "issuer": "PES Institute of Technology and Management",
+    "year": "2026",
+    "category": "Entrepreneurship",
+    "featured": false,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/1xYX9d0wZ6XH0oqz1TrMvZue-pndIggFG/view?usp=drive_link",
+    "achievement": {
+      "experience": "Participating in the Two-Day Lean Start-up & MVP Boot Camp gave me an opportunity to explore the process of turning an idea into a practical startup concept. The experience helped me understand how to think about a problem, validate an idea, develop an MVP mindset, and approach a solution from both a user and business perspective. It was a valuable learning experience that strengthened my understanding of entrepreneurship, innovation, and building solutions around real-world problems.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/1loc2r7eBZ-lr0dR_2opPEdqR3SW7v1tY/view?usp=drive_link",
+        "https://drive.google.com/file/d/175BY98IUNS1opkYoVLeb1pDY2NqZ5VWE/view?usp=drive_link",
+        "https://drive.google.com/file/d/1ENOc7u5k5xKRT6tf609Fm4NMrD_bfzWu/view?usp=drive_link"
+      ]
+    }
+  },
+  {
+    "title": "Getting started with MongoDB Atlas",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/thumbnail?id=1BRbjWLszZbggo4b7RO7nWt_sxrduMOos&sz=w2000"
+  },
+  {
+    "title": "MongoDB and the Document Model",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1e--QmEcl7J35sd-4fy4Pjm8YUcBS5vdQ/view?usp=drive_link"
+  },
+  {
+    "title": "Connecting to a MongoDB Database",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/thumbnail?id=1H-flilOoniGutWVpZQkTYL_l30v2w4E_&sz=w4000"
+  },
+  {
+    "title": "MongoDB CURD operations:insert and Find Documents",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1h7rersVwAHlgmRulWc7sUbVZjiokpYbG/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB CURD operations:Replace and Delete Documents",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1p7VNBC5aqota7S961xMOHbxVAcFPAk1R/view?usp=sharing"
+  },
+  {
+    "title": "MongoDB CURD operations:Modifying Query Results",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1EH97SO2p2vexeMYd9JP0sXfeZy2xlVbo/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB Aggregation",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1tUU3wcSrgaAP9nLh3X7uczKyarUeKj_M/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB indexes",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1LV34oU1FPcLjDkKLZPFlsBKEHVARNBd-/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB Atlas Search",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1x5V1GZvoPQY9sqSSH5GpHrl53ff3j4PT/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB Data Modeling Intro",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1ljmzz4eLS0xrovqL7ATRHGuiUraKZvAO/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB Transactions",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1n_OwwWJNn3hZSRyuGrLPwqUx2YS8LQGy/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB Aggregation in Python",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1iGCjVvfgN-6YpBjcOqJyTFp_6vhPCd9j/view?usp=drive_link"
+  },
+  {
+    "title": "Connecting to MongoDB in C#",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1r3Q0RdOejmjjGrd-YvCHcsJ2EyOp5AIk/view?usp=drive_link"
+  },
+  {
+    "title": "Calculating Percentiles from array entries (Lab Only)",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1PxDW3iIUs73IhQCzwNs6nX0zOfoaiERY/view?usp=drive_link"
+  },
+  {
+    "title": "Business Analysis & Process Management",
+    "issuer": "Coursera",
+    "year": "2024",
+    "category": "Business",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/15fI_3u_x61Iq1Zkv2T-zEnuaVjNdqfPX/view?usp=drive_link"
+  },
+  {
+    "title": "Build a free website with WordPress",
+    "issuer": "Coursera",
+    "year": "2024",
+    "category": "Web Development",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1bf9Yw6WJdpZMQayiwtNcZDB6RL6JS6jY/view?usp=drive_link"
+  },
+  {
+    "title": "National space day Quiz",
+    "issuer": "National Water Academy, Central Water Commission",
+    "year": "2024",
+    "category": "Quiz",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1vscFEkTIU_vVCuByqzopglL2J3sYW934/view?usp=drive_link"
+  },
+  {
+    "title": "AI for beginners",
+    "issuer": "HP Life",
+    "year": "2024",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1fv8cz9ZxNHs6sxR9h_JJv5UF5QjbCpUH/view?usp=drive_link"
+  },
+  {
+    "title": "MongoDB Developer Path",
+    "issuer": "MongoDB",
+    "year": "2024",
+    "category": "MongoDB",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/17FIyfrs5RZeJl68beUEvphqChLVRU8sY/view?usp=drive_link"
+  },
+  {
+    "title": "Data Science & Analytics",
+    "issuer": "HP Life",
+    "year": "2024",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1TOkYDrZdCIXWkKguhAoRyDlFwW2y_dNH/view?usp=drive_link"
+  },
+  {
+    "title": "Quiz Game with HTML & CSS",
+    "issuer": "SkillEcted",
+    "year": "2023",
+    "category": "Quiz",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1PRxCxo2HyJt9wPStWuoGMqHMMMrSixJH/view?usp=drive_link"
+  },
+  {
+    "title": "Knowledge Knockout",
+    "issuer": "PES INSTITUTE OF TECHNOLOGY AND MANAGEMENT",
+    "year": "2024",
+    "category": "Quiz",
+    "featured": true,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1k_2xawO_nxFpfog_Pt-efga_0Z8wE6Gf/view?usp=drive_link"
+  },
+  {
+    "title": "CYBER CADET",
+    "issuer": "ISEA",
+    "year": "2025",
+    "category": "Cyber Security",
+    "featured": true,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1xR6_36Pc8MmaSMU8JZM6Zk1mmOrhe-6Z/view?usp=drive_link"
+  },
+  {
+    "title": "Data Analysis with Python",
+    "issuer": "MachineLearning.org.in",
+    "year": "2025",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1NzkJuRim0K8ZMkzoqwX7v8kHnjKZY2qE/view?usp=drive_link"
+  },
+  {
+    "title": "HTML and CSS for Web Designers",
+    "issuer": "Udemy",
+    "year": "2025",
+    "category": "Web Development",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1wb5pM_wrxgaCoJpgJIA_2DhsKj0cjbIF/view?usp=drive_link"
+  },
+  {
+    "title": "Master Python & Generative AI",
+    "issuer": "Udemy",
+    "year": "2025",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1fRs7fCoSsFAr5x6RDm2dUnU6djsEaCie/view?usp=drive_link"
+  },
+  {
+    "title": "FOOD-PLANT-HEALTH webinar",
+    "issuer": "Vegan Outreach",
+    "year": "2025",
+    "category": "Awareness / Misc",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1D7zwZTQgAOEpa2ob3T1w1wUIxVH97ph9/view?usp=drive_link"
+  },
+  {
+    "title": "Quiz on Dr. B. R. Ambedkar's Birth Anniversary",
+    "issuer": "Certify'em",
+    "year": "2025",
+    "category": "Quiz",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1Y0c0ZqA1gFxQ3HDbdkW9wb9WmHOQ_FGh/view?usp=drive_link"
+  },
+  {
+    "title": "Python and Flask Framework",
+    "issuer": "Udemy",
+    "year": "2025",
+    "category": "Web Development",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1JYImmD7jv4aVdUh0qqtk51kMFl2kSBTa/view?usp=drive_link"
+  },
+  {
+    "title": "AI for students",
+    "issuer": "Nxt Wave",
+    "year": "2025",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1Acjf4ER9cxKVlr963MERrp2DlU4lk_NQ/view?usp=drive_link"
+  },
+  {
+    "title": "The Complete C++ Programming Course",
+    "issuer": "Udemy",
+    "year": "2025",
+    "category": "Programming",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1qJ4RIyISirgtcPU97F2w0m4l4de-ZK2d/view?usp=drive_link"
+  },
+  {
+    "title": "Intro to Generative AI Studio",
+    "issuer": "Simplilearn",
+    "year": "2025",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1MTkM4jMvUUVyzg0p0BsKFTvKHm5PEmhS/view?usp=drive_link"
+  },
+  {
+    "title": "GenAI Powered Data Analytics Job Simulation",
+    "issuer": "TATA",
+    "year": "2025",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1pXnPTnmvSeQfHRXeJiOE7bfHsQTQWQLr/view?usp=drive_link"
+  },
+  {
+    "title": "Cybersecurity Analyst Job Simulation",
+    "issuer": "TATA",
+    "year": "2025",
+    "category": "Cyber Security",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1DA1Dqa6xvyzwrMn4gs5pY8zBxRnpjUkA/view?usp=drive_link"
+  },
+  {
+    "title": "Generative AI complete Bootcamp-NLP,Transformers & Gen AI",
+    "issuer": "Udemy",
+    "year": "2025",
+    "category": "AI/ML",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/131hTedy5wAXY8lUdxfKxr_-aJSUQV-UV/view?usp=drive_link"
+  },
+  {
+    "title": "Training Program on Salesforce Development",
+    "issuer": "EXCELR",
+    "year": "2025",
+    "category": "Webinars",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1ouIPRurjOVXZ2l9S4j95TYU84s4-8d90/view?usp=drive_link"
+  },
+  {
+    "title": "Tech Marathon",
+    "issuer": "PES INSTITUTE OF TECHNOLOGY AND MANAGEMENT",
+    "year": "2025",
+    "category": "Quiz",
+    "featured": true,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/15j9Am6_g9UZKnNqmsWZzrnTWrNRQOLxE/view?usp=drive_link"
+  },
+  {
+    "title": "HACK FOR HIRE 2026",
+    "issuer": "Anvesana TBI",
+    "year": "2026",
+    "category": "Hackathon",
+    "featured": true,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/1lUgSaBGcgKMpGL9oO5dKckjn-fZTixqg/view?usp=drive_link",
+    "achievement": {
+      "experience": "**1st Prize — Hack for Hire 2026**. Hack for Hire 2026 was a memorable 36-hour hackathon experience where I worked on MedScript AI, an AI-powered healthcare solution focused on prescription validation and secure medical data processing. Working under a tight deadline challenged me to apply my technical skills to a real-world healthcare problem while collaborating, developing, testing, and refining the solution. Our implementation was selected by Tez Health as the best implementation, and we won 1st Prize among 50+ participating teams. This experience strengthened my problem-solving, teamwork, decision-making, and ability to build practical AI-powered solutions under pressure.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/1p3GzlDMtNrXtbAOVM4GEYaCgcgYGAsY2/view?usp=drive_link",
+        "https://drive.google.com/file/d/1lYjiPa_zJ3LZ45DMBfDs42ZAdQgad9eW/view?usp=drive_link",
+        "https://drive.google.com/file/d/164zaIUuilZtLe-3yCKmyyXZy7Byh4Qtd/view?usp=drive_link",
+        "https://drive.google.com/file/d/16daqsxhdp79BwdyG77-BoH4llb0Ook_-/view?usp=drive_link",
+        "https://drive.google.com/file/d/1QnUQsZulRVDzcYzX7hpYvpmhRWhJAa1L/view?usp=drive_link"
+      ]
+    }
+  },
+  {
+    "title": "HACKTECH FUSION 3.0",
+    "issuer": "Bapuji Institute of Engineering and Technology",
+    "year": "2025",
+    "category": "Hackathon",
+    "featured": true,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/1N_eYtzdxeGEDGGq1kmABTgSHn2sGVsnk/view?usp=drive_link",
+    "achievement": {
+      "experience": "**3rd Place — HACKTECH FUSION 3.0**. HACKTECH FUSION 3.0 was a memorable hackathon experience conducted by the Department of Information Science & Engineering at Bapuji Institute of Engineering and Technology (BIET) on 9th and 10th May 2025. During the hackathon, I worked with my team on Advance Fitness Tracker, a full-stack fitness application designed to help users monitor and improve their overall health and fitness. The project combined modern web technologies with AI and computer-vision-based features, including a Yoga Pose Correctness Detector, Bicep Curl Trainer, Smart Diet Tracker, fitness dashboard, BMI and BMR calculations, and fitness tips. Our project was recognized for its innovation, technical implementation, and practical impact, and we secured 3rd Place in the hackathon. This experience strengthened my teamwork, problem-solving, technical development, and ability to build practical solutions under a competitive hackathon environment.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/1yFfgmT8GMtkOTCmg2ctJAiqM139viz7e/view?usp=drive_link",
+        "https://drive.google.com/file/d/1fAxzsHaypRbUtjn00B4GHqbcnFIwJJZh/view?usp=drive_link",
+        "https://drive.google.com/file/d/1mIXf5AFQzq2rgeLqO_Kf_gL3QeBil5Hr/view?usp=drive_link",
+        "https://drive.google.com/file/d/1L7XXQSYNw4jIj744f1Padtj6zfdongg1/view?usp=drive_link",
+        "https://drive.google.com/file/d/1jzjNBSNL5lJupeDdP08a2tBjAV_ySF_G/view?usp=drive_link"
+      ],
+      "github": "https://github.com/bharath2957s/Advance-fitness-tracker"
+    }
+  },
+  {
+    "title": "ASTRIX 2026-THE BUILDVERSE",
+    "issuer": "CSDS ASTRA CLUB",
+    "year": "2026",
+    "category": "Hackathon",
+    "featured": true,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/11EJjjM_nmASnTlW2Xjl-SSyCLzLA2XgW/view?usp=drive_link",
+    "achievement": {
+      "experience": "**2nd Place — ASTRIX 2026 – THE BUILDVERSE**. ASTRIX 2026 – THE BUILDVERSE was a valuable hackathon experience where I had the opportunity to turn ideas into a practical solution while working in a fast-paced environment. Our team secured **2nd Place** in the hackathon, recognizing our solution and implementation. The experience challenged me to think creatively, solve problems under time constraints, collaborate effectively with my team, and apply my technical knowledge to build something meaningful. More than just a certificate, this achievement helped me strengthen my problem-solving, teamwork, development, and presentation skills.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/1dxPrxT4GHNcqs1-dfNhdPekHVztvzOsE/view?usp=drive_link",
+        "https://drive.google.com/file/d/1Qm-GWe0YdPgms9Ccu0RCp4Vg2zordErJ/view?usp=drive_link",
+        "https://drive.google.com/file/d/1PgmozCsDStmsnoE8NNmbgbuj8iDFGNoC/view?usp=drive_link",
+        "https://drive.google.com/file/d/1pfD--LsDcTDR5a7Ukb0gih8gViW0hjvW/view?usp=drive_link"
+      ],
+      "github": "https://github.com/bharath2957s/Medscript-ai.git"
+    }
+  },
+  {
+    "title": "HACK MALENADU 2026",
+    "issuer": "PESITM, Shivamogga",
+    "year": "2026",
+    "category": "Hackathon",
+    "featured": true,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/1xRvBhu5fKmPwu7hxyh5sWVSHq_GxPvur/view?usp=drive_link",
+    "achievement": {
+      "experience": "**Hack Malenadu 2026 — ReviewIQ**. Hack Malenadu 2026 was a large-scale, student-focused, industry-driven hackathon presented by PES Institute of Technology and Management, Shivamogga and powered by TestMySkills and HackCulture. The event recorded 2,356 registrations, 729 teams and 415 idea submissions with 150 teams advancing to the final floor. The hackathon also brought together 12 industry mentors, 3 IT industry founders as jury members, 4 international expert sessions and 3 MoUs with IT industries creating an environment focused on innovation, industry exposure and real-world problem solving. As part of the Consumer & Retail track. I worked on **ReviewIQ — Agentic AI A Multi-Agent Customer Review Intelligence System**, a platform designed to transform customer reviews into actionable business insights. The solution uses a multi-agent LangGraph pipeline for preprocessing, deduplication, emoji analysis, sentiment analysis, trend detection, cross-product comparison, recommendations and report generation. The project was developed using React, Vite, Tailwind CSS, Framer Motion, Recharts, FastAPI, Python, LangGraph and Ollama with LLaMA 3.1 8B with AI processing running locally. Working on the solution in a high-pressure hackathon environment strengthened my skills in AI engineering, rapid development, problem solving, teamwork and building practical solutions for real-world business problems.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/127XY1mev3XCBF4GLLG_Ne_bIGHBVHfVd/view?usp=drive_link",
+        "https://drive.google.com/file/d/1sNES0MxUCWhlopsZmZiNT2lBs6gObSTz/view?usp=drive_link",
+        "https://drive.google.com/file/d/17zg5md-XZNP3VnB-VZZBwYSg06O6ORBd/view?usp=drive_link"
+      ],
+      "github": "https://github.com/bharath2957s/Agentic-AI-A-Multi-Agent-Customer-Review-Intelligence-System",
+      "demoVideo": "assest/videos/demo.mp4"
+    }
+  },
+  {
+    "title": "NEURAL HACK",
+    "issuer": "CSDE & CSE (DS), PESTM",
+    "year": "2026",
+    "category": "Hackathon",
+    "featured": true,
+    "viewAchievement": true,
+    "driveLink": "https://drive.google.com/file/d/17a7uV8EsuxksK4YFyiGai3QJMm9nVWVY/view?usp=drivesdk",
+    "achievement": {
+      "experience": "**NEURAL HACK **. Participated in a 5-hour hackathon where I worked with my team on VaultX — Secure Zero-Trust File Sharing Platform, based on the problem statement **Secure File Sharing with Expiring Links**. We developed a secure file-sharing platform that gives users greater control over shared files through authentication, time-based expiry, download limits, access control, signed access tokens, file encryption and activity tracking. The project was built using React, Vite, TypeScript, Tailwind CSS, Framer Motion, Node.js, FastAPI, REST APIs and PostgreSQL with security mechanisms including AES-256-GCM encryption, HMAC-SHA256, Argon2id/PBKDF2, cryptographically secure tokens, atomic download counters and audit/risk monitoring. Working within a 5-hour time constraint gave me valuable experience in rapid development, security-focused problem solving, teamwork and building a practical full-stack solution under pressure.",
+      "eventPhotos": [
+        "https://drive.google.com/file/d/1qSXS_JwcJ7rOpLO-ZxDBt5ijt3EcXTWu/view?usp=drive_link",
+        "https://drive.google.com/file/d/1dkwBK5bz2AoYY8trI3zr5-t10Rc-ejJb/view?usp=drive_link"
+      ],
+      "github": "https://github.com/bharath2957s/VaultX",
+      "presentation": "https://drive.google.com/file/d/1MQp8dD3izQNAk3q9L0vhY4B9CIKOS_Tz/view?usp=drive_link"
+    }
+  },
+  {
+    "title": "GEN AI CAMP",
+    "issuer": "AlgoUniversity",
+    "year": "2026",
+    "category": "Generative AI",
+    "featured": true,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1DR1aKyMrq8_c4KnMm_8VxWes7mQSp4z3/view?usp=sharing"
+  },
+  {
+    "title": "Big Data Concepts: Big Data Essentials",
+    "issuer": "Infosys Springboard",
+    "year": "2026",
+    "category": "Big Data",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1WbUS7WyONLKwhVitBfPNxx_y-X5bM0Gg/view?usp=drive_link"
+  },
+  {
+    "title": "Introduction to Cloud Computing",
+    "issuer": "Infosys Springboard",
+    "year": "2026",
+    "category": "Cloud Computing",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1x8wLUXFpA3_dF_7GDeeuuAzlwe8IDoIV/view?usp=drive_link"
+  },
+  {
+    "title": "Techniques for Big Data Analytics",
+    "issuer": "Infosys Springboard",
+    "year": "2026",
+    "category": "Big Data",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1ff44Y-ZhwroIAyX1viYjUzbavR2hTFNR/view?usp=drive_link"
+  },
+  {
+    "title": "Summer DevSprint 2026",
+    "issuer": "Google Developer Groups on Campus",
+    "year": "2026",
+    "category": "Development",
+    "featured": false,
+    "viewAchievement": false,
+    "driveLink": "https://drive.google.com/file/d/1smPnWuU85vulStgO4DhupIFrMwCnKblv/view?usp=drivesdk"
+  }
+]
